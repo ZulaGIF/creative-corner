@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#171616">
+<title>Creative Corner — Creative Directory</title>
+<style>
+:root{--bg:#f5f3f1;--panel:#fffdfb;--ink:#242121;--muted:#77716f;--line:#e6dfdc;--accent:#8f3345;--accent2:#ead9dc;--shadow:0 12px 35px #2518180b;--radius:20px}
+[data-theme="dark"]{--bg:#171616;--panel:#222020;--ink:#f5efed;--muted:#b8aeab;--line:#3b3434;--accent:#d7798a;--accent2:#40272d;--shadow:0 12px 35px #0003}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transition:background .2s,color .2s}
+button,input,textarea,select{font:inherit}button,a{cursor:pointer}a{color:inherit;text-decoration:none}button{color:inherit}
+.site-header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{max-width:1160px;margin:auto;padding:14px 22px;display:flex;align-items:center;gap:20px}.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.04em;margin-right:auto}.brand-mark{display:grid;place-items:center;width:38px;height:38px;background:var(--accent);color:#fff;border-radius:12px;font-size:19px}.nav-links{display:flex;gap:7px;align-items:center}.nav button,.nav a{border:0;background:transparent;padding:9px 12px;border-radius:12px;color:var(--muted);font-weight:650}.nav .active,.nav button:hover,.nav a:hover{background:var(--accent2);color:var(--ink)}.theme-btn{border:1px solid var(--line)!important}
+main{max-width:1160px;margin:auto;padding:36px 22px 80px}.view{display:none}.view.active{display:block}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:800;color:var(--accent)}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(2.6rem,6vw,5rem);line-height:.98;letter-spacing:-.065em;max-width:760px;margin:16px 0 22px}h2{letter-spacing:-.04em;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.08;margin-bottom:12px}h3{letter-spacing:-.025em}.lead{font-size:1.1rem;max-width:620px;color:var(--muted)}.hero{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:30px;padding:clamp(28px,6vw,70px);background:linear-gradient(135deg,var(--panel),var(--accent2));box-shadow:var(--shadow)}.hero:after{content:"";position:absolute;right:4%;bottom:-60px;font-size:clamp(180px,30vw,340px);line-height:1;color:var(--accent);opacity:.10;transform:rotate(-18deg);pointer-events:none}.hero-content{position:relative;z-index:1}.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);border-radius:13px;padding:11px 16px;background:var(--panel);font-weight:750;transition:transform .15s,opacity .15s}.btn:hover{transform:translateY(-1px)}.btn.primary{background:var(--accent);border-color:var(--accent);color:white}.btn.subtle{background:transparent}.section-head{display:flex;justify-content:space-between;gap:16px;align-items:end;margin:42px 0 18px}.section-head p{color:var(--muted);margin-bottom:0}.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.feature{padding:22px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel)}.feature .icon{font-size:25px;margin-bottom:12px}.feature p{color:var(--muted);margin:0;font-size:.94rem}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 16px}.search{flex:1;min-width:200px}.field, input,textarea,select{width:100%;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:12px;padding:12px 13px;outline:none}.field:focus,input:focus,textarea:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 15%,transparent)}.filter{min-width:180px;width:auto}.member-count{font-size:.9rem;color:var(--muted);margin:10px 0 18px}.member-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.member-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:transform .18s,border-color .18s}.member-card:hover{transform:translateY(-3px);border-color:var(--accent)}.card-top{padding:20px 20px 0;display:flex;align-items:center;gap:13px}.avatar{width:58px;height:58px;flex:0 0 58px;display:grid;place-items:center;border-radius:17px;background:var(--accent2);color:var(--accent);font-size:22px;font-weight:800;overflow:hidden}.avatar img,.profile-avatar img{width:100%;height:100%;object-fit:cover}.card-top h3{margin:0 0 2px;font-size:1.1rem}.card-top small{color:var(--muted)}.card-body{padding:17px 20px 20px}.card-body p{color:var(--muted);font-size:.92rem;min-height:44px;margin-bottom:15px}.tags{display:flex;flex-wrap:wrap;gap:6px}.tag{display:inline-flex;padding:5px 9px;border-radius:999px;background:var(--accent2);font-size:.75rem;font-weight:700;line-height:1.35}.tag.neutral{background:var(--bg);border:1px solid var(--line);color:var(--muted)}.card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:19px;color:var(--accent);font-weight:800;font-size:.9rem}.empty{border:1px dashed var(--line);border-radius:20px;padding:38px;text-align:center;color:var(--muted);grid-column:1/-1}.profile-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:20px;align-items:start}.profile-sidebar,.profile-content,.form-card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:25px;box-shadow:var(--shadow)}.profile-sidebar{text-align:center;position:sticky;top:94px}.profile-avatar{width:112px;height:112px;border-radius:28px;background:var(--accent2);color:var(--accent);display:grid;place-items:center;font-size:40px;font-weight:800;overflow:hidden;margin:0 auto 18px}.profile-sidebar h2{font-size:1.7rem;margin-bottom:6px}.profile-sidebar .muted{color:var(--muted)}.profile-sidebar .tags{justify-content:center;margin:17px 0}.profile-content{display:grid;gap:22px}.info-section{padding-bottom:20px;border-bottom:1px solid var(--line)}.info-section:last-child{border:0;padding:0}.info-section h3{font-size:1rem;margin-bottom:8px}.info-section p{white-space:pre-wrap;color:var(--muted);margin:0}.info-section .subtext{font-size:.88rem;color:var(--muted);margin-top:8px}.form-intro{max-width:750px;color:var(--muted)}.form-card{margin-top:20px}.form-section+.form-section{border-top:1px solid var(--line);padding-top:24px;margin-top:24px}.form-section h3{margin-bottom:5px}.form-section>p{color:var(--muted);font-size:.92rem}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.form-field{display:flex;flex-direction:column;gap:7px}.form-field.full{grid-column:1/-1}.form-field label{font-size:.88rem;font-weight:750}.form-field small{font-weight:400;color:var(--muted)}textarea{min-height:100px;resize:vertical}.check-grid{display:flex;flex-wrap:wrap;gap:8px}.check-pill{position:relative}.check-pill input{position:absolute;opacity:0;width:1px;height:1px}.check-pill span{display:inline-block;padding:8px 11px;border:1px solid var(--line);border-radius:999px;font-size:.88rem;background:var(--bg);cursor:pointer}.check-pill input:checked+span{background:var(--accent2);border-color:var(--accent);color:var(--ink)}.photo-preview{margin-top:10px;max-width:180px;border:1px solid var(--line);border-radius:14px;padding:6px}.photo-preview img{display:block;width:100%;max-height:180px;object-fit:cover;border-radius:9px}.hint{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--muted);font-size:.9rem}.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.notice{padding:12px 14px;border-radius:12px;background:var(--accent2);margin:14px 0;color:var(--ink);display:none}.notice.show{display:block}.footer{border-top:1px solid var(--line);padding:25px 22px;text-align:center;color:var(--muted);font-size:.85rem}.back{margin-bottom:22px}.small-link{border:0;background:none;color:var(--accent);font-weight:800;padding:0}.danger{color:#bd4a56}.hidden{display:none!important}
+
+.about-section{margin-top:56px}.about-symbol{font-size:72px;color:var(--accent);opacity:.75;line-height:1}
+.about-panel{display:grid;grid-template-columns:1.25fr .75fr;gap:32px;padding:clamp(22px,4vw,42px);border:1px solid var(--line);border-radius:24px;background:var(--panel);box-shadow:var(--shadow)}
+.about-copy p{color:var(--muted);max-width:680px}.about-copy .about-lead{font-size:clamp(1.35rem,2.8vw,2rem);line-height:1.2;letter-spacing:-.04em;color:var(--ink);font-weight:800;margin-bottom:18px}
+.about-aside{border-left:1px solid var(--line);padding-left:26px}.aside-kicker{font-size:.72rem;text-transform:uppercase;letter-spacing:.15em;font-weight:850;color:var(--accent)}
+.about-aside ul{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:14px}.about-aside li{display:flex;align-items:center;gap:12px;font-weight:700;font-size:.92rem}.about-aside li span{font-size:.75rem;color:var(--accent);font-weight:850}
+.guidelines-section{margin-top:56px}.guideline-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.guideline{display:flex;gap:16px;padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--panel);min-height:150px}.guideline-number{font-size:.8rem;font-weight:900;color:var(--accent);letter-spacing:.08em;padding-top:3px}.guideline h3{margin:0 0 7px;font-size:1.02rem}.guideline p{margin:0;color:var(--muted);font-size:.91rem}.guidelines-note{margin:18px 0 0;padding:18px 20px;border-radius:14px;background:var(--accent2);font-size:.92rem}
+@media(max-width:850px){.about-panel{grid-template-columns:1fr}.about-aside{border-left:0;border-top:1px solid var(--line);padding:22px 0 0}.guideline-grid{grid-template-columns:1fr}}
+@media(max-width:850px){.member-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.feature-grid{grid-template-columns:1fr}.profile-layout{grid-template-columns:1fr}.profile-sidebar{position:static}.nav{gap:8px;padding:12px 14px}.nav-links{gap:0}.nav .nav-label{display:none}main{padding:25px 15px 60px}}
+@media(max-width:560px){.member-grid{grid-template-columns:1fr}.nav{flex-wrap:wrap}.brand{font-size:.95rem}.nav-links{order:3;width:100%;justify-content:space-between}.nav-links button,.nav-links a{padding:8px 10px}.theme-btn{margin-left:0}.form-grid{grid-template-columns:1fr}.form-field.full{grid-column:auto}.hero{border-radius:22px}.profile-sidebar,.profile-content,.form-card{padding:20px}.section-head{align-items:start;flex-direction:column}}
+
+/* Creative Corner visual refresh: modern gothic/Y2K with soft coquette details */
+:root{
+ --bg:#f7edf5;--panel:#fff9fd;--ink:#24172d;--muted:#78677e;--line:#e3cde5;
+ --accent:#8550b8;--accent2:#f1d9f0;--shadow:0 12px 32px rgba(69,28,91,.10);--radius:20px
+}
+[data-theme="dark"]{
+ --bg:#100c19;--panel:#1d1428;--ink:#fff2ff;--muted:#c3accb;--line:#49305c;
+ --accent:#bd8aff;--accent2:#382344;--shadow:0 14px 38px rgba(0,0,0,.35)
+}
+body{
+ background:
+   radial-gradient(ellipse at 8% 8%,rgba(173,113,214,.18),transparent 28rem),
+   radial-gradient(ellipse at 95% 32%,rgba(255,160,211,.20),transparent 24rem),
+   var(--bg);
+}
+.site-header{background:color-mix(in srgb,var(--bg) 88%,transparent);border-bottom:1px solid var(--line)}
+.brand{letter-spacing:-.035em}.brand-mark{border-radius:50% 50% 45% 45%;box-shadow:0 0 0 4px var(--accent2);position:relative}
+.brand-mark:after{content:"♡";position:absolute;font-size:11px;right:-7px;top:-8px;color:var(--accent)}
+.nav{max-width:1240px}.nav-links{gap:4px}.nav .active,.nav button:hover,.nav a:hover{border-radius:10px}
+main{max-width:1240px}
+.hero{
+ border:2px solid color-mix(in srgb,var(--accent) 48%,var(--line));
+ border-radius:26px;
+ background:
+  linear-gradient(115deg,transparent 0 72%,rgba(152,94,194,.10) 72% 73%,transparent 73%),
+  radial-gradient(circle at 90% 20%,rgba(174,111,218,.22),transparent 17rem),
+  linear-gradient(135deg,var(--panel),var(--accent2));
+ box-shadow:var(--shadow);isolation:isolate
+}
+.hero:before{content:"♡";position:absolute;right:7%;top:9%;font-size:clamp(20px,3vw,34px);letter-spacing:.25em;color:var(--accent);opacity:.7;transform:rotate(8deg)}
+.hero:after{content:"";right:3%;bottom:-55px;color:var(--accent);opacity:.13}
+.eyebrow{letter-spacing:.14em}
+h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:700}
+h1{letter-spacing:-.055em}
+h2{letter-spacing:-.035em}
+.btn{border-radius:11px;box-shadow:0 3px 0 color-mix(in srgb,var(--accent) 20%,transparent)}
+.btn.primary{background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 72%,#e6a6d4));border-color:var(--accent)}
+.feature,.about-panel,.guideline,.member-card,.profile-sidebar,.profile-content,.form-card{
+ border-color:var(--line);box-shadow:var(--shadow)
+}
+.feature{position:relative;overflow:hidden;border-radius:17px}
+.feature:after{content:"";position:absolute;right:14px;top:8px;color:var(--accent);opacity:.42;font-size:23px}
+.feature .icon{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--accent2);color:var(--accent)}
+.about-panel{border:1px solid var(--line);background:linear-gradient(135deg,var(--panel),color-mix(in srgb,var(--accent2) 35%,var(--panel)));border-radius:22px}
+.about-symbol{font-family:Georgia,serif;text-shadow:0 0 18px color-mix(in srgb,var(--accent) 25%,transparent)}
+.guideline{border-radius:15px;background:var(--panel);position:relative}
+.guideline-number{display:grid;place-items:center;flex:0 0 34px;height:34px;border:1px dashed var(--accent);border-radius:50%;background:var(--accent2)}
+.guidelines-note{border:1px dashed color-mix(in srgb,var(--accent) 60%,var(--line));background:var(--accent2);border-radius:12px}
+.member-card{border-radius:16px}.member-card:hover{box-shadow:0 16px 34px rgba(89,43,111,.16)}
+.avatar{border-radius:50%;border:2px solid var(--panel);box-shadow:0 0 0 2px var(--accent2)}
+.tag{border-radius:7px}.tag.neutral{border-radius:7px}
+.profile-sidebar,.profile-content,.form-card{border-radius:18px}
+.profile-avatar{border-radius:50%;box-shadow:0 0 0 5px var(--accent2);border:3px solid var(--panel)}
+.form-section h3{font-family:Georgia,"Times New Roman",serif;font-size:1.18rem}
+input,textarea,select,.field{border-radius:10px}
+.check-pill span{border-radius:8px}
+.check-pill input:checked+span{box-shadow:inset 0 0 0 1px var(--accent)}
+.photo-preview{border-radius:12px;background:var(--accent2)}
+.footer{border-top:1px dashed var(--line)}
+/* decorative separators echo lace and vintage profile cards without clutter */
+.section-head{position:relative}
+.section-head:after{content:"";position:absolute;left:0;bottom:-10px;width:78px;border-bottom:2px dotted var(--accent);opacity:.6}
+@media(max-width:850px){
+ .hero{padding:28px 23px}
+ .hero:before{right:5%;top:4%;font-size:20px}
+ .nav{padding:12px 14px;gap:8px}.nav-links{gap:0}.nav .active,.nav button,.nav a{padding:8px 9px;font-size:.86rem}
+}
+
+
+.submission-steps{display:grid;gap:12px;margin:16px 0}
+.submission-step{display:flex;gap:12px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:14px}
+.step-number{display:grid;place-items:center;flex:0 0 30px;height:30px;border-radius:9px;background:var(--accent2);color:var(--accent);font-weight:800}
+.submission-step strong{display:block;margin:2px 0 5px}
+.submission-step p{margin:0;color:var(--muted);font-size:.92rem;line-height:1.55}
+
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav" aria-label="Hauptnavigation">
+    <a class="brand" href="#home" data-view="home"><span class="brand-mark"></span><span>Creative Directory</span></a>
+    <div class="nav-links">
+      <button data-view="home" class="active">Home</button>
+      <button data-view="members">Mitglieder</button>
+      <button data-view="edit">Profil ausfüllen</button>
+    </div>
+    <button id="themeToggle" class="theme-btn" aria-label="Farbschema wechseln" title="Hell/Dunkel umschalten">☾</button>
+  </nav>
+</header>
+<main>
+  <section id="home" class="view active">
+    <div class="hero"><div class="hero-content">
+      <div class="eyebrow">Creative Corner · Community Directory</div>
+      <h1>Viele Ideen.<br>Mehr Möglichkeiten.</h1>
+      <p class="lead">Ein Ort, um kreative Menschen, Skills und Ideen zusammenzubringen. Damit aus „Das wollte ich schon immer mal machen“ gemeinsame Projekte werden.</p>
+      <div class="hero-actions"><button class="btn primary" data-view="members"> Mitglieder entdecken</button><button class="btn" data-view="edit">＋ Eigenes Profil anlegen</button></div>
+    </div></div>
+    <div class="section-head"><div><div class="eyebrow">Zusammen kreativ</div><h2>Finde deine<br>creative People.</h2></div><p>Unkompliziert. Offen. Gemeinsam.</p></div>
+    <div class="feature-grid">
+      <article class="feature"><div class="icon">🖤</div><h3>Lerne die Gruppe kennen</h3><p>Entdecke, wer dabei ist, was die Menschen machen und worauf sie Lust haben.</p></article>
+      <article class="feature"><div class="icon">📸</div><h3>Finde passende Skills</h3><p>Filtere nach kreativen Rollen, Interessen und Erfahrungsbereichen.</p></article>
+      <article class="feature"><div class="icon">✷</div><h3>Bring Ideen zusammen</h3><p>Finde Menschen für Shootings, Musikvideos, Design, Kunst und andere kreative Projekte.</p></article>
+    </div>
+
+    <section class="about-section">
+      <div class="section-head"><div><div class="eyebrow">About the community</div><h2>Was ist Creative Corner?</h2></div><span class="about-symbol" aria-hidden="true"></span></div>
+      <div class="about-panel">
+        <div class="about-copy">
+          <p class="about-lead">Ein kreativer Raum für Menschen, die gemeinsam Ideen verwirklichen möchten.</p>
+          <p>Creative Corner ist eine Gruppe für Menschen, die kreative Ideen teilen, voneinander lernen und gemeinsam Projekte auf die Beine stellen möchten. Egal, ob du schon lange kreativ arbeitest oder gerade erst etwas Neues ausprobierst: Du musst nicht alles können und auch kein eigenes Equipment besitzen, um dazuzugehören.</p>
+          <p>Lass uns connecten, Fähigkeiten und Ideen zusammenbringen; von Fotografie und Musikvideos über Styling, Design und Make-up bis hin zu Film, Illustration und allem, was uns sonst noch einfällt.</p>
+        </div>
+        <div class="about-aside">
+          <span class="aside-kicker">Worum es uns geht</span>
+          <ul>
+            <li><span>01</span> Menschen und Skills vernetzen</li>
+            <li><span>02</span> Ideen gemeinsam realisieren</li>
+            <li><span>03</span> Neues lernen, ohne Leistungsdruck</li>
+            <li><span>04</span> Einen respektvollen Raum schaffen</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="guidelines-section">
+      <div class="section-head"><div><div class="eyebrow">Our ground rules</div><h2>Gemeinsam kreativ.<br>Mit gegenseitigem Respekt.</h2></div><p>Damit sich alle wohlfühlen und gute Zusammenarbeit entstehen kann.</p></div>
+      <div class="guideline-grid">
+        <article class="guideline"><span class="guideline-number">01</span><div><h3>Respekt ist die Basis</h3><p>Begegne anderen freundlich und auf Augenhöhe. Keine Abwertung, Diskriminierung, Beleidigungen oder unnötigen persönlichen Angriffe.</p></div></article>
+        <article class="guideline"><span class="guideline-number">02</span><div><h3>Grenzen und Consent</h3><p>Ein Nein ist ein Nein, ohne Rechtfertigungsdruck. Frage nach, bevor du Menschen fotografierst, Inhalte teilst oder Ideen und Arbeiten weiterverwendest.</p></div></article>
+        <article class="guideline"><span class="guideline-number">03</span><div><h3>Kommunikation</h3><p>Frag nach, wenn etwas unklar ist. Sprich Missverständnisse möglichst ruhig und direkt an.</p></div></article>
+        <article class="guideline"><span class="guideline-number">04</span><div><h3>Absprachen ernst nehmen</h3><p>Sei ehrlich darüber, was du leisten kannst. Sag rechtzeitig Bescheid, wenn du absagen musst oder sich etwas verändert. Niemand muss perfekt sein.</p></div></article>
+        <article class="guideline"><span class="guideline-number">05</span><div><h3>Platz für jedes Erfahrungslevel</h3><p>Anfängerinnen sind genauso willkommen wie erfahrene Kreative. Wir teilen Wissen und respektieren Lernprozesse.</p></div></article>
+        <article class="guideline"><span class="guideline-number">06</span><div><h3>Credits und Privatsphäre</h3><p>Gib Beteiligten angemessene Credits. Teile private Nachrichten, persönliche Angaben oder unveröffentlichte Werke nicht ohne Zustimmung nach außen.</p></div></article>
+        <article class="guideline"><span class="guideline-number">07</span><div><h3>Kein Druck, kein Gatekeeping</h3><p>Mitmachen, eigene Ideen teilen und Fragen stellen soll sich freiwillig anfühlen. Niemand muss ständig verfügbar sein, etwas beweisen oder Equipment besitzen.</p></div></article>
+        <article class="guideline"><span class="guideline-number">08</span><div><h3>Safe Space</h3><p>Wir achten gemeinsam darauf, dass sich alle Mitglieder sicher, ernst genommen und willkommen fühlen.</p></div></article>
+      </div>
+      <p class="guidelines-note">Diese Regeln sollen Orientierung geben, keine zusätzliche Hürde sein. Wenn etwas schiefläuft, ist es okay, es anzusprechen. Alles respektvoll und mit dem Ziel, eine gute Lösung zu finden. ♡</p>
+    </section>
+
+    <div class="section-head"><div><div class="eyebrow">Neu hier?</div><h2>Dein Platz ist hier.</h2></div></div>
+    <div class="feature"><p>Du musst nicht alles können und auch kein eigenes Equipment besitzen. Trag ein, was du machst, lernen oder ausprobieren möchtest. Alle Angaben, außer deinem Namen, sind freiwillig.</p><div class="hero-actions"><button class="btn primary" data-view="edit">Profil ausfüllen</button><button class="btn subtle" data-view="members">Alle Mitglieder ansehen →</button></div></div>
+  </section>
+
+  <section id="members" class="view">
+    <div class="eyebrow">Das Directory</div><h1 style="font-size:clamp(2.5rem,5vw,4rem)">Mitglieder</h1>
+    <p class="lead">Wer macht was, wer möchte etwas lernen und wer hat Lust auf ähnliche Projekte? Such dir deine Creative Connection.</p>
+    <div class="toolbar"><input id="searchInput" class="search" type="search" placeholder="⌕  Namen, Skills oder Interessen suchen…" aria-label="Mitglieder suchen"><select id="roleFilter" class="filter" aria-label="Nach Rolle filtern"><option value="">Alle Creative Roles</option></select><select id="levelFilter" class="filter" aria-label="Nach Erfahrungslevel filtern"><option value="">Alle Erfahrungslevel</option><option>🌱 Exploring</option><option>🌿 Growing</option><option>🖤 Experienced</option></select></div>
+    <div id="memberCount" class="member-count"></div><div id="memberGrid" class="member-grid"></div>
+    <div class="hint" style="margin-top:22px">Hinweis: In dieser Demo sind Beispielprofile enthalten. Eigene Änderungen werden zunächst nur in diesem Browser gespeichert. Weiter unten findest du Hinweise, wie ihr die Profile gemeinsam auf GitHub veröffentlichen könnt.</div>
+  </section>
+
+  <section id="profile" class="view">
+    <button class="btn back" data-view="members">← Zurück zu allen Mitgliedern</button>
+    <div id="profileMount"></div>
+  </section>
+
+  <section id="edit" class="view">
+    <div class="eyebrow">Dein Profil</div><h1 style="font-size:clamp(2.5rem,5vw,4rem)">Stell dich vor —<br>auf deine Art.</h1>
+    <p class="form-intro">Fülle nur aus, was du teilen möchtest. Die Felder sind so gestaltet, dass andere schnell erkennen, was du machst, was du lernen möchtest und bei welchen Projekten ihr euch zusammentun könnt.</p>
+    <form id="profileForm" class="form-card">
+      <div class="form-section"><h3>🦇 About you</h3><p>Wie können wir dich ansprechen?</p>
+        <div class="form-grid">
+          <div class="form-field"><label for="name">Name / Spitzname <span aria-label="Pflichtfeld">(Pflichtfeld)</span></label><input id="name" name="name" required maxlength="70" placeholder="Wie möchtest du genannt werden?"></div>
+          <div class="form-field"><label for="age">Alter <small>(optional)</small></label><input id="age" name="age" type="number" min="16" max="100" placeholder="z. B. 24"></div>
+          <div class="form-field full"><label for="photoFile">Foto von dir <small>(optional)</small></label><input id="photoFile" name="attachment" type="file" accept="image/*"><small>Wähle direkt ein Bild aus deiner Galerie. In dieser GitHub-Pages-Version musst du das Foto im geöffneten E-Mail-Entwurf noch manuell anhängen. Bitte möglichst ein Bild unter 8 MB verwenden.</small><div id="photoPreview" class="photo-preview hidden"></div></div>
+          <div class="form-field full"><label for="instagram">Instagram / Portfolio <small>(optional)</small></label><input id="instagram" name="instagram" type="text" placeholder="@username oder https://…"></div>
+        </div>
+      </div>
+      <div class="form-section"><h3>🎨 Creative skills</h3><p>Wähle alle Rollen aus, die zu dir passen, auch wenn du etwas gerade erst ausprobierst.</p>
+        <div class="form-field"><label>Creative Roles</label><div class="check-grid" id="roleChecks"></div></div>
+        <div class="form-grid" style="margin-top:16px">
+          <div class="form-field full"><label for="skills">Skills & Erfahrung</label><textarea id="skills" name="skills" placeholder="Was kannst du bereits? Worin hast du Erfahrung?"></textarea></div>
+          <div class="form-field"><label for="level">Dein allgemeines Erfahrungsgefühl <small>(optional)</small></label><select id="level" name="level"><option value="">Nicht angeben</option><option>🌱 Exploring</option><option>🌿 Growing</option><option>🖤 Experienced</option></select><small>Deine Skills können unterschiedliche Level haben — dieses Feld ist nur ein grober Eindruck.</small></div>
+          <div class="form-field"><label for="learn">Was möchtest du lernen?</label><textarea id="learn" name="learn" placeholder="z. B. mit Licht arbeiten, Musikvideos drehen…"></textarea></div>
+        </div>
+      </div>
+      <div class="form-section"><h3>📷 Equipment & tools</h3><p>Alles freiwillig. Du brauchst kein eigenes Equipment, um mitzumachen.</p>
+        <div class="form-grid">
+          <div class="form-field"><label for="camera">Kamera / Objektive</label><textarea id="camera" name="camera" placeholder="Modelle, Objektive…"></textarea></div>
+          <div class="form-field"><label for="light">Licht / Mikrofone / weiteres Equipment</label><textarea id="light" name="light" placeholder="Licht, Stative, Audio…"></textarea></div>
+          <div class="form-field"><label for="software">Software / Programme</label><textarea id="software" name="software" placeholder="z. B. Lightroom, Premiere, Blender…"></textarea></div>
+          <div class="form-field"><label for="otherEquipment">Sonstiges</label><textarea id="otherEquipment" name="otherEquipment" placeholder="Materialien, Requisiten…"></textarea></div>
+        </div>
+      </div>
+      <div class="form-section"><h3>🖤 Interests & projects</h3><p>Damit andere schnell sehen, ob eure Ideen zusammenpassen.</p>
+        <div class="form-grid">
+          <div class="form-field full"><label>Projektinteressen</label><div class="check-grid" id="interestChecks"></div></div>
+          <div class="form-field full"><label for="interests">Kreative Interessen & Wunschprojekte</label><textarea id="interests" name="interests" placeholder="Was reizt dich kreativ — z. B. Fotografie, Zeichnen, Malen, Musik, Fashion, DIY, Kurzfilme oder neue Techniken? Was würdest du gerne ausprobieren?"></textarea></div>
+          <div class="form-field full"><label for="pastProjects">Bisherige Projekte & Arbeiten <small>(optional)</small></label><textarea id="pastProjects" name="pastProjects" placeholder="Was hast du bereits umgesetzt? Verlinke gern Projekte oder beschreibe kurz, woran du gearbeitet hast."></textarea></div>
+          <div class="form-field full"><label for="joinProjects">Wobei möchtest du gerne mit anderen zusammenarbeiten?</label><textarea id="joinProjects" name="joinProjects" placeholder="Welche Art von Projekten, Rollen oder Ideen anderer würden dich reizen?"></textarea></div>
+        </div>
+      </div>
+      <div class="form-section"><h3>✨ A little extra</h3>
+        <div class="form-grid">
+          <div class="form-field full"><label for="extra">Was sollte man sonst noch über dich wissen?</label><textarea id="extra" name="extra" placeholder="Alles, was in keine andere Kategorie passt…"></textarea></div>
+          <div class="form-field full"><label for="values">Was ist dir bei gemeinsamen Projekten wichtig?</label><textarea id="values" name="values" placeholder="z. B. klare Absprachen, entspannte Atmosphäre, kreative Freiheit…"></textarea></div>
+        </div>
+      </div>
+      <div class="form-section"><h3>So reichst du dein Profil ein</h3>
+        <div class="submission-steps">
+          <div class="submission-step"><span class="step-number">1</span><div><strong>Profil als Dokument herunterladen</strong><p>Klicke zuerst auf den Download-Button. Deine Angaben werden als übersichtlich gestaltete HTML-Datei gespeichert, die du im Browser öffnen und bei Bedarf drucken kannst.</p></div></div>
+          <div class="submission-step"><span class="step-number">2</span><div><strong>E-Mail öffnen</strong><p>Danach klickst du auf „E-Mail öffnen“. Es öffnet sich eine vorbereitete Nachricht an die Gruppenleitung.</p></div></div>
+          <div class="submission-step"><span class="step-number">3</span><div><strong>Dokument und Foto anhängen</strong><p>Füge die heruntergeladene Profildatei als Anhang hinzu. Wenn du oben ein Foto ausgewählt hast, speichere es zusätzlich in deiner Galerie/Dateien und hänge es ebenfalls an. Die Website kann ein Foto nicht automatisch an eine normale E-Mail anhängen.</p></div></div>
+          <div class="submission-step"><span class="step-number">4</span><div><strong>Auf „Senden“ tippen</strong><p>Fertig! Kontrolliere kurz, ob Dokument und optionales Foto angehängt sind.</p></div></div>
+        </div>
+        <div class="hint">Nur dein Name/Spitzname ist ein Pflichtfeld. Alle anderen Angaben und das Foto sind freiwillig. Deine Daten werden nicht automatisch an einen Server übertragen.</div>
+      </div>
+      <div id="formNotice" class="notice" role="status"></div>
+      <div class="form-actions"><button class="btn primary" type="button" id="downloadProfileBtn">Profil als Dokument herunterladen</button><button class="btn" type="button" id="emailProfileBtn">Danach: E-Mail öffnen</button><button class="btn subtle" type="button" id="resetBtn">Formular leeren</button></div>
+    </form>
+  </section>
+</main>
+<footer class="footer">Made for creative people, by creative people. <span style="color:var(--accent)"></span> · Creative Corner</footer>
+<script>
+const ROLES=["Fotografie","Videografie","Editing","Musikproduktion","Grafikdesign","Illustration","Make-up","Modeling","Styling","Fashion Design","Content Creation","Schreiben","Animation / 3D","Art Direction","Zeichnen","Malen","Handlettering","Handwerk / DIY","Nähen","Schmuckdesign","Tanz / Performance","Schauspiel","Poetry / Texte","Tattoo-Art"];
+const INTERESTS=["Photoshoots","Music Videos","Fashion","Gothic / Alternative","Experimental Art","Short Films","Social Media","Portraits","Live Events","Set Design","Illustration","Sound","Zeichnen","Malen","Mixed Media","Collage","DIY / Crafting","Nähen","Schmuckdesign","Printmaking","Tanz / Performance","Schauspiel","Poetry / Texte","Tattoo-Art","Cosplay","Set Design","Kostüm"];
+const STARTER=[
+{
+  id: "Emmi",
+  name: "Emmi",
+  roles: [
+    "Fotografie",
+    "Musikproduktion",
+    "Grafikdesign",
+    "Videografie",
+    "Editing",
+    "Fashion Design",
+    "Zeichnen"
+  ],
+  level: "🌿 Growing",
+  skills: "Kreative Bildkonzepte, visuelles Storytelling, Grafikdesign und Bildbearbeitung. Ich produziere seit 2019 eigene Musik in FL Studio und beschäftige mich mit der Verbindung aus Bild, Musik, Ästhetik und Atmosphäre.",
+  interests: "Gothic Glam, Dark Romanticism, alternative Fashion, düstere Bildwelten, experimentelle Fotografie, Editorials, Musikvideos und kreative Konzepte mit einer eigenen visuellen Handschrift.",
+  projectInterests: [
+    "Photoshoots",
+    "Fashion",
+    "Gothic / Alternative",
+    "Music Videos",
+    "Art Direction",
+    "Editorials"
+  ],
+  photo: "images/Emmi.jpg",
+  instagram: "@emizula_",
+  age: "24",
+  learn: "Mehr Erfahrung mit Videografie, Art Direction, professionellem Studio-Licht und der Umsetzung aufwendiger visueller Konzepte sammeln.",
+  camera: "",
+  light: "6 große Softboxen, 2 kleine Softboxen, Ringlichter, diverse Stative, Rode NT1A Mikrofon, Scarlett 2i2 Audio Interface, Studiomonitore, MIDI Keyboard, weitere Details auf Anfrage",
+  software: "FL Studio, Adobe Photoshop, Adobe Lightroom, CapCut",
+  otherEquipment: "Requisiten; weitere Details gerne auf Nachfrage",
+  ownProjects: "Eigene Musikprojekte und visuelle Konzepte im Gothic- und Dark-Romantic-Stil. Ich möchte Fotografie, Styling, Make-up, Grafik und Musik stärker miteinander verbinden und daraus ausdrucksstarke Editorials und Musikvideos entwickeln.",
+  joinProjects: "Alternative Portraits, Gothic Fashion, Editorial-Shootings, Musikvideos, kreative Inszenierungen und experimentelle Bildideen.",
+  extra: "Ich liebe es, eine bestimmte Atmosphäre zu erschaffen und Details bewusst einzusetzen, Von Styling und Licht bis hin zu Farben, Symbolik und Bildkomposition. Besonders spannend finde ich Projekte, bei denen unterschiedliche kreative Disziplinen zusammenkommen.",
+  values: "Klare Kommunikation, verbindliche Absprachen, gegenseitiger Respekt und eine entspannte Atmosphäre, in der alle ihre Ideen einbringen können."
+},
+{id:"demo-2",name:"Sam",roles:["Videografie","Editing","Musikproduktion"],level:"🖤 Experienced",skills:"Videoschnitt und kleine Musikvideo-Produktionen.",interests:"Musikvideos, Kurzfilme und düstere visuelle Welten.",projectInterests:["Music Videos","Short Films","Experimental Art"],photo:"",instagram:"",age:"",learn:"Mehr praktische Erfahrung mit Kameraarbeit sammeln",camera:"",light:"",software:"DaVinci Resolve",otherEquipment:"",ownProjects:"Ein atmosphärisches Performance-Video.",joinProjects:"Musikvideos, Kurzfilme",extra:"Offen für ungewöhnliche Konzepte.",values:"Kreative Freiheit, Zuverlässigkeit und gute Kommunikation."},
+{id:"demo-3",name:"Jamie",roles:["Make-up","Styling","Modeling"],level:"🌱 Exploring",skills:"Make-up-Looks und Styling; probiere gerne neue Ästhetiken aus.",interests:"Gothic Glam, Editorials und experimentelle Porträts.",projectInterests:["Photoshoots","Fashion","Gothic / Alternative"],photo:"",instagram:"",age:"",learn:"Mit Licht und Kamera zusammenarbeiten",camera:"",light:"",software:"",otherEquipment:"Make-up und Styling-Accessoires",ownProjects:"Ein dunkles Editorial mit dramatischem Make-up.",joinProjects:"Fashion- und Portraitshootings",extra:"",values:"Respektvolle Zusammenarbeit und klare Grenzen."}
+];
+const STORAGE_KEY="creative-directory-profiles-v1", THEME_KEY="creative-directory-theme-v1";
+let profiles=loadProfiles(), currentProfileId=null, editingId=null;
+function loadProfiles(){try{const saved=localStorage.getItem(STORAGE_KEY);return saved?JSON.parse(saved):STARTER.map(p=>({...p}));}catch{return STARTER.map(p=>({...p}));}}
+function persist(){localStorage.setItem(STORAGE_KEY,JSON.stringify(profiles));}
+function esc(v=""){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function initials(name=""){return name.trim().split(/\s+/).slice(0,2).map(x=>x[0]||"").join("").toUpperCase()||"";}
+function normalizeLink(value){if(!value)return "";let v=value.trim();if(v.startsWith("@"))return "https://instagram.com/"+v.slice(1);if(!/^https?:\/\//i.test(v))v="https://"+v;return v;}
+function profileAvatar(p,cls="avatar"){return p.photo?`<div class="${cls}"><img src="${esc(p.photo)}" alt="Foto von ${esc(p.name)}" onerror="this.parentElement.textContent='${esc(initials(p.name))}'"></div>`:`<div class="${cls}">${esc(initials(p.name))}</div>`;}
+function allTags(p){return [...(p.roles||[]),...(p.projectInterests||[])];}
+function showView(id){document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===id));document.querySelectorAll("[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===id));if(id==="members")renderMembers();window.scrollTo({top:0,behavior:"smooth"});}
+document.querySelectorAll("[data-view]").forEach(el=>el.addEventListener("click",()=>{const id=el.dataset.view;if(id==="profile"&&currentProfileId)renderProfile(currentProfileId);showView(id);}));
+function renderMembers(){
+ const q=(document.getElementById("searchInput").value||"").toLowerCase().trim(), role=document.getElementById("roleFilter").value, level=document.getElementById("levelFilter").value;
+ const filtered=profiles.filter(p=>{const blob=[p.name,p.skills,p.interests,p.learn,p.pastProjects,p.joinProjects,...allTags(p)].join(" ").toLowerCase();return (!q||blob.includes(q))&&(!role||(p.roles||[]).includes(role))&&(!level||p.level===level);});
+ document.getElementById("memberCount").textContent=`${filtered.length} ${filtered.length===1?"Mitglied":"Mitglieder"}${q||role||level?" gefunden":""}`;
+ const grid=document.getElementById("memberGrid");
+ if(!filtered.length){grid.innerHTML='<div class="empty"><h3>Keine passenden Profile gefunden.</h3><p>Versuch es mit einem anderen Suchbegriff oder Filter.</p><button class="btn" onclick="clearFilters()">Filter zurücksetzen</button></div>';return;}
+ grid.innerHTML=filtered.map(p=>`<article class="member-card"><div class="card-top">${profileAvatar(p)}<div><h3>${esc(p.name)}</h3><small>${esc((p.roles||[]).slice(0,2).join(" · ")||"Creative person")}</small></div></div><div class="card-body"><p>${esc((p.interests||p.skills||"Offen für neue kreative Ideen.").slice(0,115))}${(p.interests||p.skills||"").length>115?"…":""}</p><div class="tags">${(p.roles||[]).slice(0,3).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}${p.level?`<span class="tag neutral">${esc(p.level)}</span>`:""}</div><div class="card-footer"><span>${(p.projectInterests||[]).length} Projekt-Tags</span><button class="small-link" data-profile="${esc(p.id)}">Profil ansehen ↗</button></div></div></article>`).join("");
+ grid.querySelectorAll("[data-profile]").forEach(b=>b.addEventListener("click",()=>{currentProfileId=b.dataset.profile;renderProfile(currentProfileId);showView("profile");}));
+}
+function clearFilters(){document.getElementById("searchInput").value="";document.getElementById("roleFilter").value="";document.getElementById("levelFilter").value="";renderMembers();}
+document.getElementById("searchInput").addEventListener("input",renderMembers);document.getElementById("roleFilter").addEventListener("change",renderMembers);document.getElementById("levelFilter").addEventListener("change",renderMembers);
+function section(title,value,extra=""){if(!value)return "";return `<section class="info-section"><h3>${title}</h3><p>${esc(value)}</p>${extra}</section>`;}
+function renderProfile(id){
+ const p=profiles.find(x=>x.id===id);if(!p)return;const social=p.instagram?normalizeLink(p.instagram):"";
+ document.getElementById("profileMount").innerHTML=`<div class="profile-layout"><aside class="profile-sidebar">${profileAvatar(p,"profile-avatar")}<h2>${esc(p.name)}</h2>${p.age?`<p class="muted">${esc(p.age)} Jahre</p>`:""}<div class="tags">${(p.roles||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>${p.level?`<p class="muted">${esc(p.level)}</p>`:""}${social?`<p><a class="btn" href="${esc(social)}" target="_blank" rel="noopener noreferrer">Instagram / Portfolio ↗</a></p>`:""}<button class="btn primary" id="editThisProfile">Profil bearbeiten</button></aside><div class="profile-content">
+ ${section("🎨 Skills & Erfahrung",p.skills)}
+ ${section("🌱 Was ich lernen möchte",p.learn)}
+ ${section("📷 Kamera / Objektive",p.camera)}
+ ${section("💡 Licht / Mikrofone / weiteres Equipment",p.light)}
+ ${section("🧰 Software / Programme",p.software)}
+ ${section("🧷 Sonstiges Equipment",p.otherEquipment)}
+ ${section("🖤 Interessen & Wunschprojekte",p.interests)}
+ ${section("✷ Bisherige Projekte & Arbeiten",p.pastProjects)}
+ ${section("🤝 Bei diesen Projekten möchte ich mitmachen",p.joinProjects)}
+ ${section("✨ A little extra",p.extra)}
+ ${section("♡ Was mir bei gemeinsamen Projekten wichtig ist",p.values)}
+ ${p.projectInterests?.length?`<section class="info-section"><h3>Projektinteressen</h3><div class="tags">${p.projectInterests.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div></section>`:""}
+ <section class="info-section"><div class="form-actions"><button class="btn" id="exportThisProfile">Profil als JSON exportieren</button><button class="btn danger" id="deleteThisProfile">Profil aus diesem Browser löschen</button></div><p class="subtext">Demo-Version: Änderungen und Löschungen wirken nur in diesem Browser.</p></section>
+ </div></div>`;
+ document.getElementById("editThisProfile").addEventListener("click",()=>{editingId=p.id;fillForm(p);showView("edit");});
+ document.getElementById("exportThisProfile").addEventListener("click",()=>downloadJSON(p,`${slug(p.name)}-profil.json`));
+ document.getElementById("deleteThisProfile").addEventListener("click",()=>{if(confirm(`Das Profil von ${p.name} aus diesem Browser löschen?`)){profiles=profiles.filter(x=>x.id!==p.id);persist();showView("members");}});
+}
+function slug(s){return (s||"profil").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"profil";}
+function makeChecks(containerId,values,name){document.getElementById(containerId).innerHTML=values.map((v,i)=>`<label class="check-pill"><input type="checkbox" name="${name}" value="${esc(v)}" id="${name}-${i}"><span>${esc(v)}</span></label>`).join("");}
+makeChecks("roleChecks",ROLES,"roles");makeChecks("interestChecks",INTERESTS,"projectInterests");
+function fillForm(p){
+ const form=document.getElementById("profileForm");form.reset();
+ for(const key of ["name","age","instagram","skills","level","learn","camera","light","software","otherEquipment","interests","pastProjects","joinProjects","extra","values"]){if(form.elements[key])form.elements[key].value=p[key]||"";}
+ for(const key of ["roles","projectInterests"]){form.querySelectorAll(`input[name="${key}"]`).forEach(c=>c.checked=(p[key]||[]).includes(c.value));}
+ document.querySelector('#edit h1').innerHTML=editingId?"Dein Profil.<br>Deine Updates.":"Stell dich vor —<br>auf deine Art.";
+}
+function collectForm(){const f=document.getElementById("profileForm"),data={};for(const key of ["name","age","instagram","skills","level","learn","camera","light","software","otherEquipment","interests","pastProjects","joinProjects","extra","values"])data[key]=(f.elements[key]?.value||"").trim();for(const key of ["roles","projectInterests"])data[key]=[...f.querySelectorAll(`input[name="${key}"]:checked`)].map(c=>c.value);data.id=editingId||("member-"+Date.now());data.photo="";return data;}
+function downloadJSON(data,filename){const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=filename;a.click();URL.revokeObjectURL(url);}
+function profileDocumentHtml(p){
+ const esc=v=>String(v||"—").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+ const rows=[
+ ["Name / Spitzname",p.name],["Alter",p.age],["Instagram / Portfolio",p.instagram],
+ ["Creative Roles",(p.roles||[]).join(", ")],["Erfahrung",p.level],["Skills & Erfahrung",p.skills],
+ ["Möchte ich lernen",p.learn],["Kamera / Objektive",p.camera],["Licht / Mikrofone / weiteres Equipment",p.light],
+ ["Software / Programme",p.software],["Sonstiges Equipment",p.otherEquipment],
+ ["Kreative Interessen & Wunschprojekte",p.interests],["Bisherige Projekte & Arbeiten",p.pastProjects],
+ ["Zusammenarbeiten möchte ich bei",p.joinProjects],["Weitere Infos",p.extra],
+ ["Was mir bei gemeinsamen Projekten wichtig ist",p.values],["Projektinteressen",(p.projectInterests||[]).join(", ")]
+ ];
+ return `<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Creative Corner – Profil ${esc(p.name)}</title><style>body{font:16px/1.6 Arial,sans-serif;color:#281d30;background:#faf6fb;max-width:760px;margin:36px auto;padding:24px}header{border-bottom:2px solid #c7a0d8;padding-bottom:16px;margin-bottom:24px}h1{font-family:Georgia,serif;color:#70428b;margin-bottom:4px}p.sub{color:#76687c;margin-top:0}.row{padding:13px 0;border-bottom:1px solid #e7dce9;white-space:pre-wrap}.label{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#805b8e;font-weight:bold;margin-bottom:3px}.value{overflow-wrap:anywhere}@media print{body{background:white;margin:0;max-width:none}.row{break-inside:avoid}}</style></head><body><header><h1>Creative Corner</h1><p class="sub">Mitgliederprofil · ${esc(p.name)}</p></header>${rows.map(([k,v])=>`<section class="row"><div class="label">${esc(k)}</div><div class="value">${esc(Array.isArray(v)?v.join(", "):v||"—")}</div></section>`).join("")}<p class="sub">Erstellt über das Creative Corner Directory.</p></body></html>`;
+}
+function downloadProfileDocument(){
+ const p=collectForm();
+ if(!p.name){document.getElementById("name").focus();document.getElementById("formNotice").textContent="Bitte trage zuerst deinen Namen oder Spitznamen ein.";document.getElementById("formNotice").classList.add("show");return;}
+ const blob=new Blob([profileDocumentHtml(p)],{type:"text/html;charset=utf-8"});
+ const url=URL.createObjectURL(blob),a=document.createElement("a");
+ a.href=url;a.download=`${slug(p.name)}-creative-corner-profil.html`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ const n=document.getElementById("formNotice");n.textContent="Dein Profildokument wurde heruntergeladen. Als Nächstes öffne die E-Mail und hänge diese Datei an.";n.classList.add("show");
+}
+function openProfileEmail(){
+ const p=collectForm(),file=document.getElementById("photoFile").files[0];
+ if(!p.name){document.getElementById("name").focus();const n=document.getElementById("formNotice");n.textContent="Bitte trage zuerst deinen Namen oder Spitznamen ein.";n.classList.add("show");return;}
+ const subject=encodeURIComponent("Creative Corner – Mitgliederprofil: "+p.name);
+const body=encodeURIComponent("Hallo!\n\nAnbei sende ich mein Mitgliederprofil für die Creative Corner.\n\nLiebe Grüße\n"+p.name+"\n\nAchtung:\nBitte denk daran, die heruntergeladene Profildatei und dein Profilbild "+(file?file.name:"[Name des Bilds]")+" anzuhängen."); const n=document.getElementById("formNotice");
+ n.textContent="Deine E-Mail wird geöffnet. Bitte hänge das heruntergeladene Profildokument an und – falls gewünscht – dein Foto. Ausgewählte Fotos werden nicht automatisch angehängt.";
+ n.classList.add("show");
+ window.location.href="mailto:contact.emizula@gmail.com?subject="+subject+"&body="+body;
+}
+document.getElementById("downloadProfileBtn").addEventListener("click",downloadProfileDocument);
+document.getElementById("emailProfileBtn").addEventListener("click",openProfileEmail);
+document.getElementById("resetBtn").addEventListener("click",()=>{if(confirm("Formular leeren? Nicht gespeicherte Angaben gehen verloren.")){editingId=null;document.getElementById("profileForm").reset();document.getElementById("photoPreview").classList.add("hidden");document.getElementById("photoPreview").innerHTML="";document.querySelectorAll('#profileForm input[type="checkbox"]').forEach(c=>c.checked=false);document.getElementById("formNotice").classList.remove("show");}});
+document.getElementById("photoFile").addEventListener("change",e=>{
+ const file=e.target.files[0], box=document.getElementById("photoPreview");
+ if(!file){box.classList.add("hidden");box.innerHTML="";return;}
+ if(!file.type.startsWith("image/")){alert("Bitte wähle eine Bilddatei aus.");e.target.value="";return;}
+ const reader=new FileReader();reader.onload=()=>{box.innerHTML=`<img src="${reader.result}" alt="Vorschau des ausgewählten Fotos"><small>${esc(file.name)} · ${(file.size/1024/1024).toFixed(1)} MB</small>`;box.classList.remove("hidden");};reader.readAsDataURL(file);
+});
+document.getElementById("themeToggle").addEventListener("click",()=>{const next=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=next;localStorage.setItem(THEME_KEY,next);document.getElementById("themeToggle").textContent=next==="dark"?"☀":"☾";});
+(function init(){const theme=localStorage.getItem(THEME_KEY)||"light";document.documentElement.dataset.theme=theme;document.getElementById("themeToggle").textContent=theme==="dark"?"☀":"☾";const sel=document.getElementById("roleFilter");ROLES.forEach(r=>{const o=document.createElement("option");o.value=r;o.textContent=r;sel.appendChild(o);});renderMembers();})();
+</script>
+</body>
+</html>
